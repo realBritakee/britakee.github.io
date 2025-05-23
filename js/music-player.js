@@ -1,6 +1,98 @@
 // GTA 6 Countdown - Background Music Player
 // Plays the GTA VI trailer song automatically after loading screen
 
+// Immediately remove any music control buttons on script load
+(() => {
+    const cleanup = () => {
+        // Remove by ID
+        const button = document.getElementById('music-control-button');
+        if (button) {
+            button.remove();
+        }
+        
+        // Remove any button with music-related content
+        document.querySelectorAll('button').forEach(btn => {
+            const text = btn.textContent || btn.innerHTML || '';
+            const style = window.getComputedStyle(btn);
+            
+            // Remove if contains music emojis or text
+            if (text.includes('🎵') || 
+                text.includes('PLAY MUSIC') || 
+                text.includes('CLICK TO PLAY') ||
+                text.toLowerCase().includes('music') ||
+                text.toLowerCase().includes('audio')) {
+                btn.remove();
+                console.log('🗑️ Removed music-related button:', text);
+            }
+            
+            // Remove fixed position buttons in corners
+            if (style.position === 'fixed' && 
+                ((style.top === '20px' && style.right === '20px') ||
+                 style.top.includes('20px') || style.right.includes('20px'))) {
+                btn.remove();
+                console.log('🗑️ Removed corner button');
+            }
+        });
+        
+        // Also check for any elements with music-related styling
+        document.querySelectorAll('[style*="background"][style*="gradient"][style*="orange"]').forEach(el => {
+            if (el.tagName === 'BUTTON' || el.onclick) {
+                el.remove();
+                console.log('🗑️ Removed orange gradient element');
+            }
+        });
+    };
+    
+    // Run cleanup immediately and every 100ms for first 2 seconds
+    cleanup();
+    const cleanupInterval = setInterval(cleanup, 100);
+    setTimeout(() => clearInterval(cleanupInterval), 2000);
+    
+    // Add MutationObserver to watch for new buttons being added
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    // Check if the added node is a button with music content
+                    if (node.tagName === 'BUTTON') {
+                        const text = node.textContent || node.innerHTML || '';
+                        if (text.includes('🎵') || 
+                            text.includes('PLAY MUSIC') || 
+                            text.includes('CLICK TO PLAY') ||
+                            text.toLowerCase().includes('music')) {
+                            node.remove();
+                            console.log('🗑️ Observer removed new music button:', text);
+                        }
+                    }
+                    
+                    // Check for buttons within the added node
+                    if (node.querySelectorAll) {
+                        node.querySelectorAll('button').forEach(btn => {
+                            const text = btn.textContent || btn.innerHTML || '';
+                            if (text.includes('🎵') || 
+                                text.includes('PLAY MUSIC') || 
+                                text.includes('CLICK TO PLAY') ||
+                                text.toLowerCase().includes('music')) {
+                                btn.remove();
+                                console.log('🗑️ Observer removed nested music button:', text);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    });
+    
+    // Start observing
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    // Stop observing after 10 seconds
+    setTimeout(() => observer.disconnect(), 10000);
+})();
+
 class BackgroundMusicPlayer {
     constructor() {
         this.audio = document.getElementById('background-music');
@@ -16,9 +108,10 @@ class BackgroundMusicPlayer {
             return;
         }
 
-        // Set audio properties
+        // Set audio properties for seamless looping
         this.audio.volume = 0.3; // Start at 30% volume
         this.audio.loop = true;
+        this.audio.preload = 'auto';
         
         // Wait for main content to be shown before starting music
         this.waitForMainContent();
@@ -92,10 +185,8 @@ class BackgroundMusicPlayer {
             
             console.log('🎵 Background music started playing successfully!');
         } catch (error) {
-            console.log('🔇 Autoplay blocked - user interaction required:', error.message);
-            // Create a play button for user interaction
-            this.createPlayButton();
-            // Also setup general interaction fallback
+            console.log('🔇 Autoplay blocked - will start on user interaction');
+            // Setup invisible interaction fallback - no buttons or visual indicators
             this.setupAutoplayFallback();
         }
     }
@@ -125,14 +216,11 @@ class BackgroundMusicPlayer {
             if (this.hasStarted) return;
 
             try {
-                console.log('🎵 User interaction detected, trying to start music...');
                 await this.startMusic();
                 // Remove listeners after successful start
                 document.removeEventListener('click', startOnInteraction);
                 document.removeEventListener('keydown', startOnInteraction);
                 document.removeEventListener('scroll', startOnInteraction);
-                // Remove play button if it exists
-                this.removePlayButton();
             } catch (error) {
                 console.log('🔇 Still cannot play music:', error.message);
             }
@@ -143,76 +231,6 @@ class BackgroundMusicPlayer {
         document.addEventListener('scroll', startOnInteraction, { once: false });
         
         console.log('🎵 Autoplay fallback listeners added - music will start on user interaction');
-    }
-
-    createPlayButton() {
-        // Don't create multiple buttons
-        if (document.getElementById('music-play-button')) return;
-
-        const button = document.createElement('button');
-        button.id = 'music-play-button';
-        button.innerHTML = '🎵 Click to Play Music';
-        button.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 50%, #ffa726 100%);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-family: 'Hitmarker', Arial, sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        `;
-
-        button.addEventListener('mouseover', () => {
-            button.style.transform = 'translateY(-2px)';
-            button.style.boxShadow = '0 6px 20px rgba(255, 107, 53, 0.4)';
-        });
-
-        button.addEventListener('mouseout', () => {
-            button.style.transform = 'translateY(0)';
-            button.style.boxShadow = '0 4px 15px rgba(255, 107, 53, 0.3)';
-        });
-
-        button.addEventListener('click', async () => {
-            try {
-                console.log('🎵 Play button clicked');
-                button.innerHTML = '🎵 Starting...';
-                button.disabled = true;
-                
-                // Force start music
-                this.hasStarted = false; // Reset to allow restart
-                await this.startMusic();
-                
-                this.removePlayButton();
-            } catch (error) {
-                console.log('🔇 Manual play failed:', error.message);
-                button.innerHTML = '❌ Failed to Play';
-                setTimeout(() => {
-                    button.innerHTML = '🎵 Click to Play Music';
-                    button.disabled = false;
-                }, 2000);
-            }
-        });
-
-        document.body.appendChild(button);
-        console.log('🎵 Play button created');
-    }
-
-    removePlayButton() {
-        const button = document.getElementById('music-play-button');
-        if (button) {
-            button.remove();
-            console.log('🎵 Play button removed');
-        }
     }
 
     setupEventListeners() {
@@ -298,6 +316,23 @@ class BackgroundMusicPlayer {
 
 // Initialize the background music player when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove any existing music control button (in case of browser cache)
+    const existingButton = document.getElementById('music-control-button');
+    if (existingButton) {
+        existingButton.remove();
+        console.log('🗑️ Removed cached music control button');
+    }
+    
+    // Also remove any buttons in top-right corner that might be music controls
+    const topRightButtons = document.querySelectorAll('button[style*="position: fixed"][style*="top:"]');
+    topRightButtons.forEach(button => {
+        if (button.style.position === 'fixed' && 
+            (button.style.top.includes('20px') || button.style.right.includes('20px'))) {
+            button.remove();
+            console.log('🗑️ Removed potential cached music button');
+        }
+    });
+    
     window.backgroundMusicPlayer = new BackgroundMusicPlayer();
 });
 
