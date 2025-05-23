@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTA 6 Release Date Countdown</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="GTA VI Release Countdown for all regions. Grand Theft Auto VI Release Date Countdown">
+    <meta name="robots" content="max-image-preview:large">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gta-6-countdown.gengamer.in/">
+    <meta property="og:title" content="GTA 6 Release Date Countdown">
+    <meta property="og:description" content="GTA VI Release Countdown for all regions. Grand Theft Auto VI Release Date Countdown">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="GTA 6 Countdown">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gta-6-countdown.gengamer.in/">
+    <meta property="twitter:title" content="GTA 6 Release Date Countdown">
+    <meta property="twitter:description" content="GTA VI Release Countdown for all regions. Grand Theft Auto VI Release Date Countdown">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/gta-6.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <img src="./images/rockstargames.gif" alt="Rockstar Games Logo" class="preloader-logo">
+            <div class="preloader-text">Loading GTA VI Countdown...</div>
+        </div>
+    </div>
+
+    <!-- Background Image (Always visible) -->
+    <div class="bg-image" id="bg-imageHome"></div>
+
+    <!-- Background Music -->
+    <audio id="background-music" preload="auto" loop>
+        <source src="./music/GTA-VI-Trailer-Song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Main Content (Hidden initially) -->
+    <div class="main-content" id="main-content">
+        <!-- Section 1: Hero/Landing Section -->
+        <section class="section section-hero" id="hero">
+            <div class="content">
+                <!-- Hero Release Info - Rockstar Style -->
+                <div class="hero-release-section">
+                    <div class="hero-gta-icon-wrapper">
+                        <img src="./images/gta-6.png" alt="GTA 6 Logo" class="hero-gta-icon">
+                    </div>
+                    <div class="coming-text">Coming</div>
+                    <div class="release-date">May 26<br>2026</div>
+                </div>
+                
+                <!-- Platform Information -->
+                <div class="platform-section">
+                    <div class="console-platforms">
+                        <a href="https://store.playstation.com/de-de/concept/10000730" target="_blank" class="console-logo-link">
+                            <img src="./images/PS5_logo.png" alt="PlayStation 5" class="console-logo ps5-logo">
+                        </a>
+                        
+                        <a href="https://www.xbox.com/en-us/consoles/xbox-series-x" target="_blank" class="console-logo-link">
+                            <img src="./images/Xbox_Series_X_S.png" alt="Xbox Series X|S" class="console-logo xbox-logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Down Indicator -->
+            <div class="scroll-indicator" onclick="document.getElementById('countdown').scrollIntoView({ behavior: 'smooth' })">
+                <svg class="scroll-arrow" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 2: Countdown Section -->
+        <section class="section section-countdown" id="countdown">
+            <div class="content">
+                <main>
+                    <h1>GTA 6 Release Date Countdown</h1>
+                    <h2 class="topMSG noBold">
+                        <strong class="noBold">Time until GTA VI Release</strong>
+                    </h2>
+                    
+                    <!-- Region Display -->
+                    <p id="display-region" class="region">Global</p>
+                    
+                    <!-- Countdown Container -->
+                    <div id="countdown-container">
+                        <div class="countdown" id="countdown">
+                            <div id="day-div">
+                                <span id="days">0</span>
+                                <div>Days</div>
+                            </div>
+                            <div id="hour-div">
+                                <span id="hours">0</span>
+                                <div>Hours</div>
+                            </div>
+                            <div id="minute-div">
+                                <span id="minutes">0</span>
+                                <div>Minutes</div>
+                            </div>
+                            <div>
+                                <span id="seconds">0</span>
+                                <div>Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Release Date & Time (Hidden by default) -->
+                    <p style="display:none" id="display-time" class="topMSG">
+                        Release Date & Time: Tuesday, May 26 at 12:00 AM UTC
+                    </p>
+                </main>
+            </div>
+            
+            <!-- Scroll Down Indicator for Countdown Section -->
+            <div class="scroll-indicator" onclick="document.getElementById('trailers').scrollIntoView({ behavior: 'smooth' })">
+                <svg class="scroll-arrow" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 8.84L12 13.42l4.59-4.58L18 10.25l-6 6-6-6z"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 3: Trailer Section -->
+        <section class="section section-trailer" id="trailers">
+            <div class="content">
+                <!-- GTA 6 Trailer Section - Rockstar Style -->
+                <div class="trailer-hero-section">
+                    <div class="trailer-content">
+                        <h2 class="trailer-hero-title">Grand Theft Auto VI</h2>
+                        <div class="trailer-selection">
+                            <button class="trailer-arrow trailer-prev" onclick="switchTrailer('prev')">
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                                </svg>
+                            </button>
+                            <p class="trailer-subtitle" id="trailer-subtitle">Watch Trailer 2</p>
+                            <button class="trailer-arrow trailer-next" onclick="switchTrailer('next')">
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="trailer-hero-container">
+                            <iframe id="trailer-iframe" width="560" height="315" src="https://www.youtube.com/embed/VQRLujxTm3c?si=_9S29SixbMQGLSzb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="trailer-hero-video"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Like/Dislike and Share Container -->
+                <div class="interaction-container">
+                    <!-- Like/Dislike Buttons -->
+                    <div class="like-dislike-container">
+                        <button id="like-btn" class="interaction-button like-button">
+                            <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.97-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z"/>
+                            </svg>
+                            <span id="like-count">0</span>
+                        </button>
+                        <div class="button-separator"></div>
+                        <button id="dislike-btn" class="interaction-button dislike-button">
+                            <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M15,3H6c-0.83,0-1.54,0.5-1.84,1.22l-3.02,7.05c-0.09,0.23-0.12,0.47-0.12,0.73v2c0,1.1,0.9,2,2,2h6.31l-0.95,4.57 c-0.03,0.32,0.05,0.66,0.23,0.94c0.18,0.28,0.45,0.5,0.75,0.62c0.09,0.03,0.17,0.06,0.26,0.06c0.24,0,0.47-0.06,0.68-0.14 c0.27-0.1,0.49-0.26,0.67-0.48L19,13.90V4C19,3.45,18.55,3,18,3z M17,12.90L9.34,20.71c-0.18,0.18-0.44,0.29-0.71,0.29 c-0.09,0-0.17-0.01-0.25-0.03C8.24,20.92,8.12,20.87,8.02,20.8C7.92,20.73,7.84,20.63,7.8,20.5L7.8,20.5l0.95-4.57l0.4-1.9L8.6,12 H5H3c-0.55,0-1-0.45-1-1v-2c0-0.13,0.02-0.26,0.06-0.39l3.02-7.05C5.29,4.23,5.63,4,6,4h9V12.90z"/>
+                            </svg>
+                            <span id="dislike-count">0</span>
+                        </button>
+                    </div>
+
+                    <!-- Show Timings Button -->
+                    <button id="show-timings-btn" class="interaction-button timings-button">
+                        <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8 s8,3.59,8,8S16.41,20,12,20z M12.5,7H11v6l5.25,3.15l0.75-1.23l-4.5-2.67V7z"/>
+                        </svg>
+                        <span>Show Timings</span>
+                    </button>
+
+                    <!-- Share Button -->
+                    <button id="shareB" class="interaction-button share-button" onclick="shareButtonClick()">
+                        <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15,5.63L20.66,12L15,18.37V14h-1c-3.96,0-7.14,1-9,4c1.83-5.04,5.18-7.5,9-7.5h1V5.63 M14,3v6C8.22,9,4.95,13.64,5,21c2.45-5.5,8-6,9-6v6l8-9L14,3L14,3z"/>
+                        </svg>
+                        <span>Share</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Scroll Up Indicator for Trailer Section -->
+            <div class="scroll-indicator" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                <svg class="scroll-arrow" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.41 15.16L12 10.58l4.59 4.58L18 13.75l-6-6-6 6z"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Section 4: Network Section -->
+        <section class="section section-footer" id="network">
+            <div class="content">
+                <!-- Our Network Section -->
+                <div class="network-section">
+                    <h3>Our Network</h3>
+                    <div class="discord-widget-container">
+                        <div class="discord-invite-card">
+                            <div class="discord-invite-header">
+                                <span class="discord-invite-text">You have been invited to join a server</span>
+                            </div>
+                            <div class="discord-invite-content">
+                                <div class="discord-invite-info">
+                                    <div class="discord-server-icon">
+                                        <img src="./images/Logo.ico" 
+                                             alt="Britacord" 
+                                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMTYiIGZpbGw9IiM1ODY1RjIiLz4KPHN2ZyB4PSIxMiIgeT0iMTIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0yMC4zMTcgNC4zN2ExOS43OTEgMTkuNzkxIDAgMCAwLTQuODg1LTEuNTE1YS4wNzQuMDc0IDAgMCAwLS4wNzkuMDM3Yy0uMjEuMzc1LS40NDQuODY0LS42MDggMS4yNWExOC4yNyAxOC4yNyAwIDAgMC01LjQ4NyAwYTEyLjY0IDEyLjY0IDAgMCAwLS42MTctMS4yNWEuMDc3LjA3NyAwIDAgMC0uMDc5LS4wMzdBMTkuNzM2IDE5LjczNiAwIDAgMCAzLjY3NyA0LjM3YS4wNy4wNyAwIDAgMC0uMDMyLjAyN0MuNTMzIDkuMDQ2LS4zMiAxMy41OC4wOTkgMTguMDU3YS4wODIuMDgyIDAgMCAwIC4wMzEuMDU3YTE5LjkgMTkuOSAwIDAgMCA1Ljk5MyAzLjAzYS4wNzguMDc4IDAgMCAwIC4wODQtLjAyOGExNC4wOSAxNC4wOSAwIDAgMCAxLjIyNi0xLjk5NGEuMDc2LjA3NiAwIDAgMC0uMDQxLS4xMDZhMTMuMTA3IDEzLjEwNyAwIDAgMS0xLjg3Mi0uODkyYS4wNzcuMDc3IDAgMCAxLS4wMDgtLjEyOGExMC4yIDEwLjIgMCAwIDAgLjM3Mi0uMjkyYS4wNzQuMDc0IDAgMCAxIC4wNzctLjAxYzMuOTI4IDEuNzkzIDguMTggMS43OTMgMTIuMDYyIDBhLjA3NC4wNzQgMCAwIDEgLjA3OC4wMWMuMTIuMDk4LjI0Ni4xOTguMzczLjI5MmEuMDc3LjA3NyAwIDAgMS0uMDA2LjEyN2ExMi4yOTkgMTIuMjk5IDAgMCAxLTEuODczLjg5MmEuMDc3LjA3NyAwIDAgMC0uMDQxLjEwN2MuMzYuNjk4Ljc3MiAxLjM2MiAxLjM2MiAxLjk5M2EuMDc2LjA3NiAwIDAgMCAuMDg0LjAyOGExOS44MzkgMTkuODM5IDAgMCAwIDYuMDAyLTMuMDNhLjA3Ny4wNzcgMCAwIDAgLjAzMi0uMDU0Yy41LTUuMTc3LS44MzgtOS42NzQtMy41NDktMTMuNjZhLjA2MS4wNjEgMCAwIDAtLjAzMS0uMDN6TTguMDIgMTUuMzNjLTEuMTg3IDAtMi4xNjEtMS4wODUtMi4xNjEtMi40MTUgMC0xLjMzLjk1Ni0yLjQxNSAyLjE2MS0yLjQxNSAxLjIxIDAgMi4xNzYgMS4wOTYgMi4xNjEgMi40MTUgMCAxLjMzLS45NTYgMi40MTUtMi4xNjEgMi40MTV6bTcuOTc1IDBjLTEuMTg3IDAtMi4xNjEtMS4wODUtMi4xNjEtMi40MTUgMC0xLjMzLjk1Ni0yLjQxNSAyLjE2MS0yLjQxNSAxLjIxIDAgMi4xNzYgMS4wOTYgMi4xNjEgMi40MTUgMCAxLjMzLS45NTYgMi40MTUtMi4xNjEgMi40MTV6Ii8+Cjwvc3ZnPgo8L3N2Zz4K'">
+                                    </div>
+                                    <div class="discord-server-details">
+                                        <div class="discord-server-name">
+                                            BRITACORD
+                                            <svg class="discord-verified-icon" width="16" height="16" viewBox="0 0 16 15.2" aria-label="Verified">
+                                                <path d="M7.4,11.17,4,8.62,5,7.26l2,1.53L10.64,4l1.36,1Z" fill="white"/>
+                                            </svg>
+                                        </div>
+                                        <div class="discord-member-info">
+                                            <span class="discord-online-dot"></span>
+                                            <span class="discord-member-count">6 online</span>
+                                            <span class="discord-member-separator">•</span>
+                                            <span class="discord-total-members">15 Members</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="https://discord.gg/9cnB9vNjRF" target="_blank" class="discord-join-button">
+                                    Join
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <p>Built with ❤️ by <span class="footer-name">Britakee</span></p>
+                </footer>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toastNotif" class="tNtf hidden">
+        <span></span>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="./js/scroll-animations.js"></script>
+    <script src="./js/preloader.js"></script>
+    <script src="./js/slideshow.js"></script>
+    <script src="./js/music-player.js"></script>
+    <script src="./js/countdown.js"></script>
+    <script src="./js/like-system.js"></script>
+    <script src="./js/share.js"></script>
+    <script src="./js/rockstar-store.js"></script>
+    <script src="./js/timings.js"></script>
+    <script src="./js/trailer-selector.js"></script>
+</body>
+</html> 
